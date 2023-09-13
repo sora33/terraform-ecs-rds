@@ -12,35 +12,35 @@ AWS ECS(Fargate), RDS, ALB 構成を作成してみた。
 ## ディレクトリ構成
 ```
 .
-├── envs（terraform initなどコマンドを叩くところ）
-│   ├── prod
-│   │   ├── backend.tf（tfstateの管理場所S3）
-│   │   ├── local.tf（ローカル）
-│   │   ├── variable.tf（変数）
-│   │   ├── main.tf（モジュールを呼び出す）
-│   │   ├── provider.tf（リージョン、tagのデフォルト）
-│   │   ├── terraform.tfvars（環境変数）
-│   │   └── version.tf（terraform,awsのバージョン管理）
-│   ├── stg
-│   └── test
-└── modules（モジュール）
-    ├── ecs-alb-rds
-    │   ├── alb.tf
-    │   ├── ecr.tf
-    │   ├── ecs.tf
-    │   ├── network.tf
-    │   ├── output.tf
-    │   ├── rds.tf
-    │   ├── route53.tf
-    │   └── variable.tf
-    ├── iam_role
-    │   ├── main.tf
-    │   ├── output.tf
-    │   └── variable.tf
-    └── security_group
-        ├── main.tf
-        ├── output.tf
-        └── variable.tf
+├── envs （それぞれの環境下で、terraform initなどコマンドを叩く）
+│   ├── prod （本番環境）
+│   │   ├── backend.tf （tfstateの管理場所S3）
+│   │   ├── local.tf （ローカル）
+│   │   ├── variable.tf （変数）
+│   │   ├── main.tf （モジュールを呼び出して、リソース作成するところ）
+│   │   ├── provider.tf （リージョン、tagのデフォルト設定）
+│   │   ├── terraform.tfvars （環境変数）
+│   │   └── version.tf （terraform,awsのバージョン管理）
+│   ├── stg （ステージング環境: prodと同じファイル構成）
+│   └── test （テスト環境: prodと同じファイル構成）
+└── modules （モジュール）
+    ├── ecs-alb-rds （env/hoge/main.tfから利用される）
+    │   ├── alb.tf （ロードバランサ、リスナー、セキュリティグループ）
+    │   ├── ecr.tf （ECR, ライフサイクルポリシー）
+    │   ├── ecs.tf （ECSのクラスター、タスク定義、サービス、ターゲットグループ、セキュリティグループ）
+    │   ├── network.tf （VPC, Subnet, route table, Nat Gateway）
+    │   ├── output.tf （出力 （ターミナルに表示）したい値）
+    │   ├── rds.tf （RDS, セキュリティグループ）
+    │   ├── route53.tf （Route53, ACM情報を取得）
+    │   └── variable.tf （main.tfで利用時に必要な変数）
+    ├── iam_role （modules/ecs-alb-rds/hoge.tfから利用される）
+    │   ├── main.tf （リソース定義）
+    │   ├── output.tf （出力値）
+    │   └── variable.tf （引数）
+    └── security_group （modules/ecs-alb-rds/hoge.tfから利用される）
+        ├── main.tf （リソース定義）
+        ├── output.tf （出力値）
+        └── variable.tf （引数）
 ```
 ## デプロイ時の手順
 1. 書式を標準化 terraform fmt -recursive
