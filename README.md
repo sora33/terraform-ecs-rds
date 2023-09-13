@@ -12,7 +12,7 @@ AWS ECS(Fargate), RDS, ALB 構成を作成してみた。
 ## ディレクトリ構成
 ```
 .
-├── envs（terraform initなどをするところ）
+├── envs（terraform initなどコマンドを叩くところ）
 │   ├── prod
 │   │   ├── backend.tf（tfstateの管理場所S3）
 │   │   ├── local.tf（ローカル）
