@@ -10,6 +10,7 @@ AWS ECS(Fargate), RDS, ALB 構成を作成してみた。
 6. 適用  terrafrom apply
 
 ## ディレクトリ構成
+```
 .
 ├── envs（terraform initなどをするところ）
 │   ├── prod
@@ -40,7 +41,7 @@ AWS ECS(Fargate), RDS, ALB 構成を作成してみた。
         ├── main.tf
         ├── output.tf
         └── variable.tf
-
+```
 ## デプロイ時の手順
 1. 書式を標準化 terraform fmt -recursive
 2. 構文や属性の妥当性を検証 terraform validate
