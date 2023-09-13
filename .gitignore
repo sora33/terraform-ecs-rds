@@ -1,0 +1,26 @@
+# Compiled files
+*.tfstate
+*.tfstate.backup
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Terraform lock file
+.terraform.lock.hcl
+
+# Ignore .terraform directories
+.terraform/
+
+# Ignore sensitive data files
+*.tfvars
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+
+# Temporary files
+*.bak
+*.swp
+*.tmp
