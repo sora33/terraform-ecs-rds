@@ -103,6 +103,9 @@ aws s3api put-public-access-block --bucket tfstate-hc-ecs --public-access-block-
 ## クリーンアップ
 - terraform destroyでリソースを削除（注意: データも削除されます）
 - 事前に削除保護はfalseにして、スナップショットをtrueにする必要があります。
+- S3バケットは全て消す。　aws s3 rm s3://hcecsproject-prod-alb-log --recursive
+- ECRは、中身を消す。（マネージドコンソールでいい）
+- 
 ```
 enable_deletion_protection = false
 skip_final_snapshot    = true
