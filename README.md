@@ -4,6 +4,8 @@ AWS ECS(Fargate), RDS, ALB 構成を作成してみた。
 ## これに関する記事を書いています。
 - [Terraform で、AWS ECS(Fargate), ALB, RDS の構成をコード化した。
 ](https://qiita.com/hiiragiya/items/00a41f2c340b7d176274)
+- [AWS ECS(Fargate), ALB, RDSの構成でRailsデプロイしてみた
+](https://qiita.com/hiiragiya/items/7df1af73b6f3e34b63ab)
 
 
 ## 実行手順
