@@ -1,6 +1,11 @@
 ## 概要
 AWS ECS(Fargate), RDS, ALB 構成を作成してみた。
 
+## これに関する記事を書いています。
+- [Terraform で、AWS ECS(Fargate), ALB, RDS の構成をコード化した。
+](https://qiita.com/hiiragiya/items/00a41f2c340b7d176274)
+
+
 ## 実行手順
 1. tfstate格納用のS3バケットを作成
 2. cd envs/prod
@@ -10,6 +15,9 @@ AWS ECS(Fargate), RDS, ALB 構成を作成してみた。
 6. 適用  terrafrom apply
 
 ## ディレクトリ構成
+ディレクトリ構成は**envs**と**modules**に分かれており、それぞれの環境（本番、ステージング、テスト）で独立した設定を行うことができます。
+モジュール分割について、あまり細かく分けると**output**と**variable**が増えて煩雑になるので、根幹となる**ecs-alb-rds**は１つのモジュールとしています。
+利用頻度の多い**IAM**や**セキュリティグループ**は、再利用しやすいようにモジュール化しました。
 ```
 .
 ├── envs （それぞれの環境下で、terraform initなどコマンドを叩く）
