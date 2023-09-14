@@ -100,6 +100,14 @@ aws s3api put-public-access-block --bucket tfstate-hc-ecs --public-access-block-
 ## RDS作成後はパスワードを変更する
 - aws rds modify-db-instance --db-instance-identifier 'example' --master-user-password 'NewMasterPassword!'
 
+## クリーンアップ
+- terraform destroyでリソースを削除（注意: データも削除されます）
+- 事前に削除保護はfalseにして、スナップショットをtrueにする必要があります。
+```
+enable_deletion_protection = false
+skip_final_snapshot    = true
+```
+
 ## 参考
 - 野村 友規「実践Terraform　AWSにおけるシステム設計とベストプラクティス」
 - https://github.com/rhythmictech/terraform-aws-alb-ecs-task/blob/v1.10.0/examples/fargate/main.tf
